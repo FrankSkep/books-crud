@@ -14,23 +14,26 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-@RequestMapping("/book") // URL inicial
+@RequestMapping("/book") // URL Inicial
 public class BookController {
 
     @Autowired
     private BookRepository bookRepository;
 
+    // GET ALL
     @GetMapping
     public List<Book> getBooks() {
         return bookRepository.findAll();
     }
 
+    // GET (Obtener un libro por su ID)
     @GetMapping("/{id}")
     public Book getBookByID(@PathVariable Long id) {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("No se encontro el libro con ID : " + id));
     }
 
+    // POST (Crear un nuevo libro)
     @PostMapping
     public Book[] createBook(@RequestBody Book[] bookDetails) {
         for (Book book : bookDetails) {
@@ -39,6 +42,7 @@ public class BookController {
         return bookDetails;
     }
 
+    // PUT (Actualizar datos de un libro)
     @PutMapping("/{id}")
     public Book updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
         Book book = bookRepository.findById(id)
@@ -53,6 +57,7 @@ public class BookController {
         return bookRepository.save(book);
     }
 
+    // DELETE (Eliminar un libro por su ID)
     @DeleteMapping("/{id}")
     public String deleteBook(@PathVariable Long id) {
         Book book = bookRepository.findById(id)
@@ -61,5 +66,4 @@ public class BookController {
         bookRepository.delete(book);
         return "El libro con ID : " + id + " se elimino correctamente.";
     }
-
 }
