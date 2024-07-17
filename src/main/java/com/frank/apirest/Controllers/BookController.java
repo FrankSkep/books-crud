@@ -1,8 +1,12 @@
 package com.frank.apirest.Controllers;
 
 import com.frank.apirest.Entities.Book;
+
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -35,7 +39,8 @@ public class BookController {
 
     // POST (Crear un nuevo libro)
     @PostMapping
-    public Book[] createBook(@RequestBody Book[] bookDetails) {
+    public List<Book> createBook(@RequestBody List<Book> bookDetails) {
+
         for (Book book : bookDetails) {
             bookRepository.save(book);
         }
@@ -59,11 +64,17 @@ public class BookController {
 
     // DELETE (Eliminar un libro por su ID)
     @DeleteMapping("/{id}")
-    public String deleteBook(@PathVariable Long id) {
+    public ResponseEntity<HashMap<String, Object>> deleteBook(@PathVariable Long id) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontro el libro con ID : " + id));
+                .orElseThrow(() -> new RuntimeException("No se encontró el libro con ID: " + id));
 
         bookRepository.delete(book);
-        return "El libro con ID : " + id + " se elimino correctamente.";
+
+        // Crear un mapa para contener el mensaje y los datos del libro eliminado
+        HashMap<String, Object> response = new HashMap<>();
+        String mensaje = "El libro con ID: " + id + " se eliminó correctamente.";
+        response.put(mensaje, book);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
