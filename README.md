@@ -8,9 +8,10 @@ Esta API REST permite gestionar una colección de libros, proporcionando operaci
 - Spring Boot 3.2.7
 - PostgreSQL
 
-### BookController
+### Controllers
 
-El `BookController` maneja las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para los libros en la base de datos.
+* **BookController**
+  * El `BookController` maneja las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para los libros en la base de datos.
 
 #### Endpoints
 
