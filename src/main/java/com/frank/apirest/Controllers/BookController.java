@@ -39,12 +39,8 @@ public class BookController {
 
     // POST (Crear un nuevo libro)
     @PostMapping
-    public List<Book> createBook(@RequestBody List<Book> bookDetails) {
-
-        for (Book book : bookDetails) {
-            bookRepository.save(book);
-        }
-        return bookDetails;
+    public Book createBook(@RequestBody Book book) {
+        return bookRepository.save(book);
     }
 
     // PUT (Actualizar datos de un libro)
@@ -64,17 +60,11 @@ public class BookController {
 
     // DELETE (Eliminar un libro por su ID)
     @DeleteMapping("/{id}")
-    public ResponseEntity<HashMap<String, Object>> deleteBook(@PathVariable Long id) {
+    public ResponseEntity<Book> deleteBook(@PathVariable Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("No se encontró el libro con ID: " + id));
 
         bookRepository.delete(book);
-
-        // Crear un mapa para contener el mensaje y los datos del libro eliminado
-        HashMap<String, Object> response = new HashMap<>();
-        String mensaje = "El libro con ID: " + id + " se eliminó correctamente.";
-        response.put(mensaje, book);
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return ResponseEntity.ok(book);
     }
 }
