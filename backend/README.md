@@ -1,4 +1,4 @@
-# API REST Spring Framework
+# API REST Spring Boot
 
 ## Descripción
 API REST desarrollada con Java y Spring Boot, permite gestionar una colección de libros, proporcionando operaciones CRUD (Crear, Leer, Actualizar y Borrar) sobre los libros almacenados en una base de datos PostgreSQL.
