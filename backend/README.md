@@ -8,39 +8,29 @@ API REST desarrollada con Java y Spring Boot, permite gestionar una colección d
 - Spring Boot 3.2.7
 - PostgreSQL
 
-## Endpoints
+## Endpoints de la API
 
-* **GET /book**
-  
-  * Retorna todos los libros almacenados.
-  * **Método HTTP:** GET
-  * **Respuesta:** Retorna una lista con todos los libros, sino hay libros.
+### GET /book
+- Retorna todos los libros almacenados.
+- Respuesta: Lista con todos los libros.
 
-* **GET /book/{id}**
-  
-  * Retorna un libro específico por su ID.
-  * **Parámetros de Ruta:** `{id}` - ID del libro.
-  * **Método HTTP:** GET
-  * **Respuesta:** Retorna los detalles del libro con el ID especificado.
+### GET /book/{id}
+- Retorna un libro específico por su ID.
+- Parámetros de Ruta: `{id}` - ID del libro.
+- Respuesta: Detalles del libro con el ID especificado.
 
-* **POST /book**
-  
-  * Registra un libro nuevo en la base de datos.
-  * **Método HTTP:** POST
-  * **Cuerpo de la Petición:** Objeto JSON con detalles del libros a crear.
-  * **Respuesta:** Retorna los detalles del libro creado..
+### POST /book
+- Registra un libro nuevo en la base de datos.
+- Cuerpo de la Petición: Objeto JSON con detalles del libro a crear.
+- Respuesta: Detalles del libro creado.
 
-* **PUT /book/{id}**
-  
-  * Actualiza la información de un libro existente por su ID.
-  * **Parámetros de Ruta:** `{id}` - ID del libro a actualizar.
-  * **Método HTTP:** PUT
-  * **Cuerpo de la Petición:** Objeto JSON con los nuevos detalles del libro.
-  * **Respuesta:** Retorna los detalles del libro actualizado, si no encuentra el libro.
- 
-* **DELETE /book/{id}**
-  
-  * Elimina un libro existente por su ID.
-  * **Parámetros de Ruta:** `{id}` - ID del libro a eliminar.
-  * **Método HTTP:** DELETE
-  * **Respuesta:** Retorna un mensaje confirmando la eliminación del libro.
+### PUT /book/{id}
+- Actualiza la información de un libro existente por su ID.
+- Parámetros de Ruta: `{id}` - ID del libro a actualizar.
+- Cuerpo de la Petición: Objeto JSON con los nuevos detalles del libro.
+- Respuesta: Detalles del libro actualizado.
+
+### DELETE /book/{id}
+- Elimina un libro existente por su ID.
+- Parámetros de Ruta: `{id}` - ID del libro a eliminar.
+- Respuesta: Detalles del libro eliminado.
