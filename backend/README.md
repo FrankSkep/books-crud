@@ -14,21 +14,21 @@ API REST desarrollada con Java y Spring Boot, permite gestionar una colección d
   
   * Retorna todos los libros almacenados.
   * **Método HTTP:** GET
-  * **Respuesta:** Retorna una lista con todos los libros, sino hay libros, retorna un error 404.
+  * **Respuesta:** Retorna una lista con todos los libros, sino hay libros.
 
 * **GET /book/{id}**
   
   * Retorna un libro específico por su ID.
   * **Parámetros de Ruta:** `{id}` - ID del libro.
   * **Método HTTP:** GET
-  * **Respuesta:** Retorna los detalles del libro con el ID especificado, si no se encuentra, retorna un error 404.
+  * **Respuesta:** Retorna los detalles del libro con el ID especificado.
 
 * **POST /book**
   
-  * Crea uno o varios libros nuevos en la base de datos.
+  * Registra un libro nuevo en la base de datos.
   * **Método HTTP:** POST
-  * **Cuerpo de la Petición:** Un arreglo de objetos JSON con detalles de los libros a crear.
-  * **Respuesta:** Retorna los detalles de los libros creados. Si hay algún error durante la creación de los libros, retorna un mensaje de error.
+  * **Cuerpo de la Petición:** Objeto JSON con detalles del libros a crear.
+  * **Respuesta:** Retorna los detalles del libro creado..
 
 * **PUT /book/{id}**
   
@@ -36,11 +36,11 @@ API REST desarrollada con Java y Spring Boot, permite gestionar una colección d
   * **Parámetros de Ruta:** `{id}` - ID del libro a actualizar.
   * **Método HTTP:** PUT
   * **Cuerpo de la Petición:** Objeto JSON con los nuevos detalles del libro.
-  * **Respuesta:** Retorna los detalles del libro actualizado, si no encuentra el libro, retorna un error 404.
+  * **Respuesta:** Retorna los detalles del libro actualizado, si no encuentra el libro.
  
 * **DELETE /book/{id}**
   
   * Elimina un libro existente por su ID.
   * **Parámetros de Ruta:** `{id}` - ID del libro a eliminar.
   * **Método HTTP:** DELETE
-  * **Respuesta:** Retorna un mensaje confirmando la eliminación del libro, si no se encuentra el libro, retorna un error 404.
+  * **Respuesta:** Retorna un mensaje confirmando la eliminación del libro.
