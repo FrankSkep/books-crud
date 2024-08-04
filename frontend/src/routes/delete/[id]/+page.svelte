@@ -1,6 +1,6 @@
 <script>
     import { triggerToast } from '../../../lib/toastStore.js';
-    export let data; // Obtengo el id del libro a eliminar
+    export let data; // Recibo id del libro a editar
     const id = parseInt(data.id);
 
     import { goto } from '$app/navigation';

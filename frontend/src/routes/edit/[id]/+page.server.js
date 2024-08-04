@@ -1,7 +1,7 @@
 export async function load({ params }) {
     let id = params.id;
     
-    // Obtengo el libro por su id
+    // Obtencion del libro
     const response = await fetch(`http://localhost:8000/book/${id}`);
     const book = await response.json();
     

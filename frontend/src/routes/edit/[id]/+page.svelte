@@ -3,11 +3,9 @@
     import { goto } from '$app/navigation';
     import {triggerToast} from '../../../lib/toastStore';
 
-    export let data; // Obtencion del libro a editar
+    export let data; // Recibo los datos de server.js
 
-    async function updateBook(event) {
-        event.preventDefault();
-
+    async function updateBook() {
         // Obtencion datos del formulario
         const book = {
             titulo: data.titulo,

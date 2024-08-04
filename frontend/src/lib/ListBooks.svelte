@@ -12,19 +12,10 @@
             goto(`/delete/${id}`);
         }
     }
-
-    let showToast = false;
-    let toastMessage = "Mostroxd";
-    let col = "success";
-
-    function triggerToast() {
-      showToast = true;
-      setTimeout(() => showToast = false, 3000); // Oculta el toast después de 3 segundos
-    }
 </script>
 
 
-<h1 class="text-center my-4">Book List</h1>
+<h2 class="text-center my-4">Book List</h2>
 
 <table class="table table-striped table-hover">
     <thead class="table-dark">
