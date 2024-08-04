@@ -2,7 +2,7 @@
 
 ## Descripcion
 
-Aplicación web que permite gestionar una colección de libros mediante operaciones CRUD (Crear, Leer, Actualizar y Borrar) sobre los datos almacenados en una base de datos PostgreSQL. El proyecto consta de una API REST desarrollada con Java y Spring Boot, y un frontend construido con SvelteKit para la interaccion con la API y Bootstrap para el estilo de las interfaces.
+Aplicación web para gestionar una colección de libros mediante operaciones CRUD (Crear, Leer, Actualizar y Borrar) sobre los datos almacenados en una base de datos PostgreSQL. El proyecto consta de una API REST desarrollada con Java y Spring Boot, y un frontend construido con SvelteKit para la interaccion con la API y Bootstrap para el estilo de las interfaces.
 
 ## Requisitos
 
