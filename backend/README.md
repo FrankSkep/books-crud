@@ -1,13 +1,3 @@
-# API REST
-
-## Descripción
-API REST desarrollada con Java y Spring Boot, para gestionar una colección de libros, proporcionando operaciones CRUD (Crear, Leer, Actualizar y Borrar) sobre los libros almacenados en una base de datos PostgreSQL.
-
-## Requisitos
-- Java 21
-- Spring Boot 3.2.7
-- PostgreSQL
-
 ## Endpoints de la API
 
 ### GET /book
