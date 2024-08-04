@@ -6,12 +6,6 @@ export default defineConfig({
 		sveltekit(),
 	],
 	server: {
-		proxy: {
-			'/api': {
-				target: 'http://localhost:8000',
-				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, '')
-			}
-		}
+		port: 5173
 	}
 });

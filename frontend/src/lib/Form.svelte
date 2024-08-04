@@ -1,9 +1,16 @@
 <script>
+	import { goto } from '$app/navigation';
+    import { triggerToast } from './toastStore.js';
+
     export let data, action;
     const isEditing = data.id !== undefined;
+
+    function cancel() {
+        goto('/');
+        triggerToast('Operation canceled', 'danger');
+    }
 </script>
 
-<!-- Formulario para agregar/editar -->
  <div class="container-sm">
     <!-- Formulario para agregar/editar -->
     <form on:submit|preventDefault={action}>
@@ -29,22 +36,7 @@
             <label for="pages" class="form-label">Pages</label>
             <input type="number" id="pages" class="form-control" bind:value={data.numPaginas} required />
         </div>
-        <button type="submit" class="btn btn-primary">{isEditing ? 'Update' : 'Save'}</button>
+        <button type="submit" class="btn btn-{isEditing ? 'primary' : 'success'}">{isEditing ? 'Update' : 'Save'}</button>
+        <button type="button" class="btn btn-secondary" on:click={cancel}>Cancel</button>
     </form>
 </div>
-
-<!-- <form on:submit|preventDefault={action}>
-    {#if isEditing}
-        <label for="id">Id</label>
-        <input type="text" id="id" bind:value={data.id} readonly />
-    {/if}
-    <label for="title">Title</label>
-    <input type="text" id="title" bind:value={data.titulo} required />
-    <label for="author">Author</label>
-    <input type="text" id="author" bind:value={data.autor} required />
-    <label for="edition">Edition</label>
-    <input type="text" id="edition" bind:value={data.edicion} required />
-    <label for="pages">Pages</label>
-    <input type="number" id="pages" bind:value={data.numPaginas} required />
-    <button type="submit">{isEditing ? 'Update' : 'Save'}</button>
-</form> -->

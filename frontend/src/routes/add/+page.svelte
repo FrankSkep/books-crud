@@ -13,7 +13,7 @@
 
     async function addBook(event) {
         event.preventDefault();
-        const response = await fetch('api/book', {
+        const response = await fetch('http://localhost:8000/book', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
