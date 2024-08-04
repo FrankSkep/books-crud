@@ -1,4 +1,5 @@
 <script>
+    import { triggerToast } from '../../../lib/toastStore.js';
     export let data; // Obtengo el id del libro a eliminar
     const id = parseInt(data.id);
 
@@ -14,9 +15,9 @@
 
         if (response.ok) {
             goto('/');
-            // alert('Book deleted successfully');
+            triggerToast('Book deleted successfully', 'warning');
         } else {
-            alert('Failed to delete the book');
+            triggerToast('Failed to delete the book', 'danger')
         }
     }
     deleteBook();

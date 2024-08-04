@@ -1,7 +1,7 @@
 <script>
-    import Wrapper from '../../../lib/Wrapper.svelte';
     import Form from '../../../lib/Form.svelte';
     import { goto } from '$app/navigation';
+    import {triggerToast} from '../../../lib/toastStore';
 
     export let data; // Obtencion del libro a editar
 
@@ -26,20 +26,18 @@
             });
 
             if (response.ok) {
-                alert('Book updated successfully');
                 goto('/');
+                triggerToast('Book updated successfully', 'success');
             } else {
                 const error = await response.json();
-                alert(`Failed to update book: ${error.message}`);
+                triggerToast(`Failed to update book: ${error.message}`, 'danger');
             }
         } catch (error) {
-            alert(`Error: ${error.message}`);
+            triggerToast(`Error: ${error.message}`, 'danger');
         }
     }
 
 </script>
 
-<Wrapper>
-    <h1>Editing book</h1>
-    <Form {data} action={updateBook} />
-</Wrapper>
+<h1>Editing book</h1>
+<Form {data} action={updateBook} />
