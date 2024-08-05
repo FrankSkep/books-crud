@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class BookService {
@@ -19,16 +17,16 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Book getBookByID(@PathVariable Long id) {
+    public Book getBookByID(Long id) {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("No se encontro el libro con ID : " + id));
     }
 
-    public Book createBook(@RequestBody Book book) {
+    public Book createBook(Book book) {
         return bookRepository.save(book);
     }
 
-    public Book updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
+    public Book updateBook(Long id, Book bookDetails) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("No se encontro el libro con ID : " + id));
 
@@ -41,7 +39,7 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public ResponseEntity<Book> deleteBook(@PathVariable Long id) {
+    public ResponseEntity<Book> deleteBook(Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("No se encontró el libro con ID: " + id));
 
