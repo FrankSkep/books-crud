@@ -13,9 +13,9 @@ Aplicación web para gestionar una colección de libros mediante operaciones CRU
 - PostgreSQL
 
 ### Frontend
-- Node.js (versión LTS)
 - SvelteKit
 - Bootstrap
+- Node.js (versión LTS)
 
 ## Instalación y Ejecución
 
