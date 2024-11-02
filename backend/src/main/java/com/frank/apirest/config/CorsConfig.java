@@ -1,4 +1,4 @@
-package com.frank.apirest.Configurations;
+package com.frank.apirest.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

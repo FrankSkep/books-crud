@@ -1,6 +1,6 @@
-package com.frank.apirest.Repositories;
+package com.frank.apirest.repository;
 
-import com.frank.apirest.Entities.Book;
+import com.frank.apirest.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Long> {}
