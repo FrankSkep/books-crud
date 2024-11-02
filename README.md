@@ -1,4 +1,4 @@
-# <div align="center">Gestión de Libros</div>
+# <div align="center">Crud web Spring boot y Sveltekit</div>
 
 ## Descripcion
 
