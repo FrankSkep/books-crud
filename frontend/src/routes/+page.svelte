@@ -5,9 +5,8 @@
 
     let books = writable([]);
 
-    // Fetch data from the server
     onMount(async () => {
-        const response = await fetch('http://localhost:8000/book');
+        const response = await fetch('http://localhost:8000/api/books');
         const data = await response.json();
         books.set(data);
     });

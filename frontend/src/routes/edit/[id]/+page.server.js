@@ -1,9 +1,5 @@
 export async function load({ params }) {
-    let id = params.id;
-    
-    // Obtencion del libro
-    const response = await fetch(`http://localhost:8000/book/${id}`);
+    const response = await fetch(`http://localhost:8000/api/books/${params.id}`);
     const book = await response.json();
-    
     return book;
 }

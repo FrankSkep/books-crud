@@ -14,33 +14,34 @@
     }
 </script>
 
-
 <h2 class="text-center my-4">Book List</h2>
 
-<table class="table table-striped table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Edition</th>
-            <th scope="col">Pages</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {#each $books as book}
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
             <tr>
-                <td>{book.id}</td>
-                <td>{book.titulo}</td>
-                <td>{book.autor}</td>
-                <td>{book.edicion}</td>
-                <td>{book.numPaginas}</td>
-                <td>
-                    <button class="btn btn-primary btn-sm me-2" on:click={() => navigateToEditBook(book.id)}>Edit</button>
-                    <button class="btn btn-danger btn-sm" on:click={() => navigateToDelBook(book.id)}>Delete</button>
-                </td>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Edition</th>
+                <th scope="col">Pages</th>
+                <th scope="col">Actions</th>
             </tr>
-        {/each}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {#each $books as book}
+                <tr>
+                    <td>{book.id}</td>
+                    <td>{book.titulo}</td>
+                    <td>{book.autor}</td>
+                    <td>{book.edicion}</td>
+                    <td>{book.numPaginas}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm me-2" on:click={() => navigateToEditBook(book.id)}>Edit</button>
+                        <button class="btn btn-danger btn-sm" on:click={() => navigateToDelBook(book.id)}>Delete</button>
+                    </td>
+                </tr>
+            {/each}
+        </tbody>
+    </table>
+</div>

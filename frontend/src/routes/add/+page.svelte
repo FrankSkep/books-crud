@@ -13,7 +13,7 @@
 
     async function addBook(event) {
         event.preventDefault();
-        const response = await fetch('http://localhost:8000/book', {
+        const response = await fetch('http://localhost:8000/api/books', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,5 +28,4 @@
     }
 </script>
 
-<h1 class="text-center">Adding book</h1>
 <Form data={book} action={addBook} />

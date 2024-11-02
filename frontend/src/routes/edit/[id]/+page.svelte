@@ -3,10 +3,9 @@
     import { goto } from '$app/navigation';
     import {triggerToast} from '../../../lib/toastStore';
 
-    export let data; // Recibo los datos de server.js
+    export let data; // Recibe los datos de +page.server.js
 
     async function updateBook() {
-        // Obtencion datos del formulario
         const book = {
             titulo: data.titulo,
             autor: data.autor,
@@ -15,7 +14,7 @@
         };
 
         try {
-            const response = await fetch(`http://localhost:8000/book/${data.id}`, {
+            const response = await fetch(`http://localhost:8000/api/books/${data.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,5 +36,4 @@
 
 </script>
 
-<h1>Editing book</h1>
 <Form {data} action={updateBook} />

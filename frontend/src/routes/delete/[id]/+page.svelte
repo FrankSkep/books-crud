@@ -1,12 +1,13 @@
 <script>
+    import { goto } from '$app/navigation';
     import { triggerToast } from '../../../lib/toastStore.js';
     export let data; // Recibo id del libro a editar
     const id = parseInt(data.id);
 
-    import { goto } from '$app/navigation';
+    
 
     async function deleteBook() {
-        const response = await fetch(`http://localhost:8000/book/${id}`, {
+        const response = await fetch(`http://localhost:8000/api/books/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
