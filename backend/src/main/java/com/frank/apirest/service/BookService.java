@@ -1,7 +1,8 @@
-package com.frank.apirest.Service;
+package com.frank.apirest.service;
 
-import com.frank.apirest.Entities.Book;
-import com.frank.apirest.Repositories.BookRepository;
+import com.frank.apirest.entity.Book;
+import com.frank.apirest.exception.BookNotFoundException;
+import com.frank.apirest.repository.BookRepository;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class BookService {
 
     public Book getById(Long id) {
         return bookRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontro el libro con ID : " + id));
+                .orElseThrow(() -> new BookNotFoundException("No se encontro el libro con ID : " + id));
     }
 
     public Book save(Book book) {
@@ -30,7 +31,7 @@ public class BookService {
 
     public Book update(Long id, Book bookDetails) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontro el libro con ID : " + id));
+                .orElseThrow(() -> new BookNotFoundException("No se encontro el libro con ID : " + id));
 
         book.setTitulo(bookDetails.getTitulo());
         book.setAutor(bookDetails.getAutor());
@@ -42,7 +43,7 @@ public class BookService {
 
     public ResponseEntity<Book> delete(Long id) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontró el libro con ID: " + id));
+                .orElseThrow(() -> new BookNotFoundException("No se encontró el libro con ID: " + id));
 
         bookRepository.delete(book);
         return ResponseEntity.ok(book);

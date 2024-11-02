@@ -1,12 +1,13 @@
-package com.frank.apirest.Controllers;
+package com.frank.apirest.controller;
 
-import com.frank.apirest.Entities.Book;
-import com.frank.apirest.Service.BookService;
+import com.frank.apirest.entity.Book;
+import com.frank.apirest.service.BookService;
 
 import java.util.List;
 
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,12 +19,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/api/books")
 public class BookController {
 
     private final BookService bookService;
 
-    @Autowired
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
@@ -34,8 +34,8 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public Book getBookByID(@PathVariable Long id) {
-        return bookService.getById(id);
+    public ResponseEntity<Book> getBookByID(@PathVariable Long id) {
+        return ResponseEntity.ok(bookService.getById(id));
     }
 
     @PostMapping
@@ -45,21 +45,11 @@ public class BookController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
-        try {
-            return ResponseEntity.ok(bookService.update(id, bookDetails));
-        } catch (
-                RuntimeException e) {
-            return ResponseEntity.status(404).body(e.getMessage());
-        }
+        return ResponseEntity.ok(bookService.update(id, bookDetails));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBook(@PathVariable Long id) {
-        try {
-            return ResponseEntity.ok(bookService.delete(id));
-        } catch (
-                RuntimeException e) {
-            return ResponseEntity.status(404).body(e.getMessage());
-        }
+        return ResponseEntity.ok(bookService.delete(id));
     }
 }
