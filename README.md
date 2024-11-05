@@ -2,7 +2,7 @@
 
 ## Descripcion
 
-Aplicación web CRUD para gestionar una colección de libros. El proyecto consta de una API REST pequeñá desarrollada con Java, Spring Boot y PostgreSQL, y un frontend desarrollado con SvelteKit.
+Aplicación web CRUD para gestionar una colección de libros. El proyecto consta de una API REST desarrollada con Java, Spring Boot y PostgreSQL, y un frontend desarrollado con SvelteKit.
 
 ## Requisitos
 
