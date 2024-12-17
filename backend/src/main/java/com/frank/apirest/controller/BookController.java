@@ -5,9 +5,7 @@ import com.frank.apirest.service.BookService;
 
 import java.util.List;
 
-import org.apache.coyote.Response;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,36 +18,33 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/books")
+@RequiredArgsConstructor
 public class BookController {
 
     private final BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
-
     @GetMapping
     public List<Book> getBooks() {
-        return bookService.getAll();
+        return bookService.getAllBooks();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Book> getBookByID(@PathVariable Long id) {
-        return ResponseEntity.ok(bookService.getById(id));
+    public ResponseEntity<Book> getBookDetails(@PathVariable Long id) {
+        return ResponseEntity.ok(bookService.getBookDetails(id));
     }
 
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        return ResponseEntity.ok(bookService.save(book));
+        return ResponseEntity.ok(bookService.createBook(book));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
-        return ResponseEntity.ok(bookService.update(id, bookDetails));
+        return ResponseEntity.ok(bookService.updateBook(id, bookDetails));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteBook(@PathVariable Long id) {
-        return ResponseEntity.ok(bookService.delete(id));
+        return ResponseEntity.ok(bookService.deleteBook(id));
     }
 }

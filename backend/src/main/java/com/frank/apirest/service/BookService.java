@@ -6,44 +6,45 @@ import com.frank.apirest.repository.BookRepository;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class BookService {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
 
-    public List<Book> getAll() {
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    public Book getById(Long id) {
+    public Book getBookDetails(Long id) {
         return bookRepository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException("No se encontro el libro con ID : " + id));
+                .orElseThrow(() -> new BookNotFoundException("Book with ID : " + id + " not found"));
     }
 
-    public Book save(Book book) {
+    public Book createBook(Book book) {
         return bookRepository.save(book);
     }
 
-    public Book update(Long id, Book bookDetails) {
+    public Book updateBook(Long id, Book bookDetails) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException("No se encontro el libro con ID : " + id));
+                .orElseThrow(() -> new BookNotFoundException("Book with ID : " + id + " not found"));
 
-        book.setTitulo(bookDetails.getTitulo());
-        book.setAutor(bookDetails.getAutor());
-        book.setEdicion(bookDetails.getEdicion());
-        book.setNumPaginas(bookDetails.getNumPaginas());
+        book.setTitle(bookDetails.getTitle());
+        book.setAuthor(bookDetails.getAuthor());
+        book.setEdition(bookDetails.getEdition());
+        book.setPagesNumber(bookDetails.getPagesNumber());
 
         return bookRepository.save(book);
     }
 
-    public ResponseEntity<Book> delete(Long id) {
+    public ResponseEntity<Book> deleteBook(Long id) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException("No se encontró el libro con ID: " + id));
+                .orElseThrow(() -> new BookNotFoundException("Book with ID : " + id + " not found"));
 
         bookRepository.delete(book);
         return ResponseEntity.ok(book);

@@ -21,18 +21,18 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El título es requerido")
-    @Size(max = 100, message = "El título no puede tener más de 100 caracteres")
-    private String titulo;
+    @NotBlank(message = "The title is required")
+    @Size(max = 100, message = "The title cannot have more than 100 characters")
+    private String title;
 
-    @NotBlank(message = "El autor es obligatorio")
-    @Size(max = 100, message = "El autor no puede tener más de 100 caracteres")
-    private String autor;
+    @NotBlank(message = "The author is required")
+    @Size(max = 100, message = "The author cannot have more than 100 characters")
+    private String author;
 
-    @NotBlank(message = "La edición es obligatoria")
-    @Size(max = 50, message = "La edición no puede tener más de 50 caracteres")
-    private String edicion;
+    @NotBlank(message = "The edition is required")
+    @Size(max = 50, message = "The edition cannot have more than 50 characters")
+    private String edition;
 
-    @Min(value = 1, message = "El número de páginas debe ser mayor a 0")
-    private int numPaginas;
+    @Min(value = 1, message = "The number of pages must be greater than 0")
+    private int pagesNumber;
 }
