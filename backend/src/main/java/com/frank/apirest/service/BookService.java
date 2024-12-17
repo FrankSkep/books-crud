@@ -7,7 +7,6 @@ import com.frank.apirest.repository.BookRepository;
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +36,7 @@ public class BookService {
         book.setTitle(bookDetails.getTitle());
         book.setAuthor(bookDetails.getAuthor());
         book.setEdition(bookDetails.getEdition());
-        book.setPagesNumber(bookDetails.getPagesNumber());
+        book.setNumberOfPages(bookDetails.getNumberOfPages());
 
         return bookRepository.save(book);
     }

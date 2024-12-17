@@ -1,9 +1,6 @@
 package com.frank.apirest.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -15,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "books")
 public class Book {
 
     @Id
@@ -23,16 +21,20 @@ public class Book {
 
     @NotBlank(message = "The title is required")
     @Size(max = 100, message = "The title cannot have more than 100 characters")
+    @Column(nullable = false, unique = true)
     private String title;
 
     @NotBlank(message = "The author is required")
     @Size(max = 100, message = "The author cannot have more than 100 characters")
+    @Column(nullable = false)
     private String author;
 
     @NotBlank(message = "The edition is required")
     @Size(max = 50, message = "The edition cannot have more than 50 characters")
+    @Column(nullable = false)
     private String edition;
 
     @Min(value = 1, message = "The number of pages must be greater than 0")
-    private int pagesNumber;
+    @Column(name = "number_of_pages", nullable = false)
+    private int numberOfPages;
 }
