@@ -24,19 +24,19 @@
                 {/if}
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" id="title" class="form-control" bind:value={data.titulo} required />
+                    <input type="text" id="title" class="form-control" bind:value={data.title} required />
                 </div>
                 <div class="mb-3">
                     <label for="author" class="form-label">Author</label>
-                    <input type="text" id="author" class="form-control" bind:value={data.autor} required />
+                    <input type="text" id="author" class="form-control" bind:value={data.author} required />
                 </div>
                 <div class="mb-3">
                     <label for="edition" class="form-label">Edition</label>
-                    <input type="text" id="edition" class="form-control" bind:value={data.edicion} required />
+                    <input type="text" id="edition" class="form-control" bind:value={data.edition} required />
                 </div>
                 <div class="mb-3">
                     <label for="pages" class="form-label">Pages</label>
-                    <input type="number" id="pages" class="form-control" bind:value={data.numPaginas} required />
+                    <input type="number" id="pages" class="form-control" bind:value={data.numberOfPages} required />
                 </div>
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-{isEditing ? 'primary' : 'success'}">{isEditing ? 'Update' : 'Save'}</button>

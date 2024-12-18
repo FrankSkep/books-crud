@@ -1,0 +1,7 @@
+{
+  "semi": true,
+  "singleQuote": true,
+  "svelteBracketNewLine": true,
+  "svelteAllowShorthand": false,
+  "tabWidth": 4
+}

@@ -32,10 +32,10 @@
             {#each $books as book}
                 <tr>
                     <td>{book.id}</td>
-                    <td>{book.titulo}</td>
-                    <td>{book.autor}</td>
-                    <td>{book.edicion}</td>
-                    <td>{book.numPaginas}</td>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                    <td>{book.edition}</td>
+                    <td>{book.numberOfPages}</td>
                     <td>
                         <button class="btn btn-primary btn-sm me-2" on:click={() => navigateToEditBook(book.id)}>Edit</button>
                         <button class="btn btn-danger btn-sm" on:click={() => navigateToDelBook(book.id)}>Delete</button>
