@@ -10,8 +10,11 @@
     let currentPage = 0;
     let totalPages = 1;
 
-    async function fetchBooks(page = currentPage, size = pageSize) {
-        const response = await fetch(`http://localhost:8000/api/books?page=${page}&size=${size}`);
+    let filterTitle = '';
+    let filterAuthor = '';
+
+    async function fetchBooks(page = currentPage, size = pageSize, title = filterTitle, author = filterAuthor) {
+        const response = await fetch(`http://localhost:8000/api/books?page=${page}&size=${size}&title=${title}&author=${author}`);
         const data = await response.json();
         books.set(data.content || []);
         currentPage = data.pageable.pageNumber;
@@ -42,6 +45,10 @@
         fetchBooks(currentPage - 1);
     }
 
+    function applyFilters() {
+        fetchBooks(0, pageSize, filterTitle, filterAuthor);
+    }
+
     fetchBooks();
 </script>
 
@@ -55,9 +62,27 @@
         width: auto;
         max-width: 100px;
     }
+
+    .filter-controls {
+        margin-bottom: 20px;
+    }
 </style>
 
 <h2 class="text-center my-4">Book List</h2>
+
+<div class="filter-controls d-flex justify-content-between">
+    <div>
+        <label for="filterTitle">Title:</label>
+        <input id="filterTitle" type="text" bind:value={filterTitle} class="form-control" />
+    </div>
+    <div>
+        <label for="filterAuthor">Author:</label>
+        <input id="filterAuthor" type="text" bind:value={filterAuthor} class="form-control" />
+    </div>
+    <div class="d-flex align-items-end">
+        <button class="btn btn-primary" on:click={applyFilters}>Apply Filters</button>
+    </div>
+</div>
 
 <div class="table-responsive">
     <table class="table table-striped table-hover">

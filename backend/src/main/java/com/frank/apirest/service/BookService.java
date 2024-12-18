@@ -22,6 +22,10 @@ public class BookService {
         return bookRepository.findAll(pageable);
     }
 
+    public Page<Book> getBooksByTitleAndAuthor(String title, String author, Pageable pageable) {
+        return bookRepository.findByTitleAndAuthor(title, author, pageable);
+    }
+
     public Book getBookDetails(Long id) {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException("Book with ID : " + id + " not found"));
