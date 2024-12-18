@@ -1,90 +1,90 @@
 # <div align="center">Library CRUD</div>
 
-## Description
+## Descripción
 
-This project is a web application for managing a collection of books using a CRUD interface. It features a decoupled architecture with an independent backend developed using **Spring Boot** and **PostgreSQL**, and a frontend developed with **SvelteKit**. The backend's REST API is consumed by the frontend, providing an interactive interface to manage book data.
+Este proyecto es una aplicación web CRUD para gestionar una colección de libros. Se implementa con un backend independiente, desarrollado con **Spring Boot** y **PostgreSQL**, y un frontend desarrollado con **SvelteKit**. La API REST del backend es consumida por el frontend, proporcionando una interfaz interactiva para gestionar los datos de los libros.
 
-### Purpose
+### Propósito
 
-The primary goal of this project was to create a separate application architecture, with a decoupled **backend** and **frontend**, to demonstrate the consumption of a RESTful API from a frontend application.
+El objetivo principal de este proyecto fue crear una arquitectura de aplicación separada, con un **backend** y un **frontend** desacoplados, para demostrar el consumo de una API RESTful desde una aplicación frontend.
 
-## Technologies
+## Tecnologías
 
 ### Backend
 
-- **Java 21**: Main programming language.
-- **Spring Boot**: Framework for creating web applications and RESTful services.
-- **PostgreSQL**: Relational database used to store book data.
-- **Maven**: Project and dependency management tool.
+- **Java 21**: Lenguaje de programación principal.
+- **Spring Boot**: Framework para crear aplicaciones web y servicios RESTful.
+- **PostgreSQL**: Base de datos relacional utilizada para almacenar los datos de los libros.
+- **Maven**: Herramienta de gestión de proyectos y dependencias.
 
-#### [API Endpoints](backend/README.md)
+#### [Endpoints API](backend/README.md)
 
 ### Frontend
 
-- **SvelteKit**: Frontend framework for building modern and fast web applications.
-- **Bootstrap**: CSS framework for designing the user interface.
-- **Node.js**: Runtime environment for the frontend application.
+- **SvelteKit**: Framework frontend para crear aplicaciones web modernas y rápidas.
+- **Bootstrap**: Framework de estilos para el diseño de la interfaz de usuario.
+- **Node.js**: Entorno de ejecución para la aplicación frontend.
 
-## Requirements
+## Requisitos
 
-- **Java 21** (for the backend)
-- **Maven** (for managing backend dependencies)
-- **Node.js** and **npm** (for the frontend)
-- **PostgreSQL** (database)
+- **Java 21** (para el backend)
+- **Maven** (para gestionar dependencias del backend)
+- **Node.js** y **npm** (para el frontend)
+- **PostgreSQL** (base de datos)
 
-## Installation and Running
+## Instalación y Ejecución
 
 ### Backend
 
-1. Clone the repository:
+1. Clona el repositorio:
 
    ```sh
    git clone https://github.com/FrankSkep/library-crud
    cd library-crud/backend
    ```
 
-2. Configure the database in `src/main/resources/application.properties`, adding the details of your **PostgreSQL** instance.
+2. Configura la base de datos en `src/main/resources/application.properties`, agregando los detalles de tu instancia de **PostgreSQL**.
 
-3. Build and run the project:
+3. Construye y ejecuta el proyecto:
 
    ```sh
    ./mvnw clean install
    ./mvnw spring-boot:run
    ```
 
-   The backend will be available at `http://localhost:8080`.
+   El backend estará disponible en `http://localhost:8080`.
 
 ### Frontend
 
-1. Clone the repository:
+1. Clona el repositorio:
 
    ```sh
    git clone https://github.com/FrankSkep/library-crud
    cd library-crud/frontend
    ```
 
-2. Install the dependencies:
+2. Instala las dependencias:
 
    ```sh
    npm install
    ```
 
-3. Run the project:
+3. Ejecuta el proyecto:
 
    ```sh
    npm run dev
    ```
 
-   The frontend will be available at `http://localhost:5173`.
+   El frontend estará disponible en `http://localhost:5173`.
 
-## Project Structure
+## Estructura del Proyecto
 
 ### Backend
 
-- `/src/main/java/`: Backend source code (Controllers, services, repositories).
-- `/src/main/resources/`: Configuration files and resources, such as `application.properties`.
+- `/src/main/java/`: Código fuente del backend (Controladores, servicios, repositorios).
+- `/src/main/resources/`: Archivos de configuración y recursos, como `application.properties`.
 
 ### Frontend
 
-- `/src/routes`: Pages and routes of the SvelteKit application.
-- `/src/lib`: Reusable components and utilities.
+- `/src/routes`: Páginas y rutas de la aplicación SvelteKit.
+- `/src/lib`: Componentes reutilizables y utilidades.

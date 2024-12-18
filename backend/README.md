@@ -1,9 +1,123 @@
-## Endpoints de la API
+# LibraryCrudAPI
 
-| Método | Endpoint   | Descripción                                               | Parámetros de Ruta    | Cuerpo de la Petición                          | Respuesta                                  |
-| ------ | ---------- | --------------------------------------------------------- | --------------------- | ---------------------------------------------- | ------------------------------------------ |
-| GET    | /book      | Retorna todos los libros almacenados.                     | Ninguno               | Ninguno                                        | Lista con todos los libros.                |
-| GET    | /book/{id} | Retorna un libro específico por su ID.                    | `{id}` - ID del libro | Ninguno                                        | Detalles del libro con el ID especificado. |
-| POST   | /book      | Registra un libro nuevo en la base de datos.              | Ninguno               | Objeto JSON con detalles del libro a crear.    | Detalles del libro creado.                 |
-| PUT    | /book/{id} | Actualiza la información de un libro existente por su ID. | `{id}` - ID del libro | Objeto JSON con los nuevos detalles del libro. | Detalles del libro actualizado.            |
-| DELETE | /book/{id} | Elimina un libro existente por su ID.                     | `{id}` - ID del libro | Ninguno                                        | Detalles del libro eliminado.              |
+## Endpoints
+
+### Obtener todos los libros
+
+- **URL:** `/api/books`
+- **Método:** `GET`
+- **Parámetros de consulta opcionales:**
+    - `title`: Filtrar por título
+    - `author`: Filtrar por autor
+    - `page`: Número de página (por defecto 0)
+    - `size`: Tamaño de página (por defecto 10)
+- **Respuesta exitosa:** `200 OK`
+- **Ejemplo de respuesta:**
+    ```json
+    {
+      "content": [
+        {
+          "id": 1,
+          "title": "El Quijote",
+          "author": "Miguel de Cervantes",
+          "edition": "Primera",
+          "numberOfPages": 500
+        }
+      ],
+      "pageable": {
+        "pageNumber": 0,
+        "pageSize": 10
+      },
+      "totalElements": 1,
+      "totalPages": 1
+    }
+    ```
+
+### Obtener detalles de un libro
+
+- **URL:** `/api/books/{id}`
+- **Método:** `GET`
+- **Respuesta exitosa:** `200 OK`
+- **Ejemplo de respuesta:**
+    ```json
+    {
+      "id": 1,
+      "title": "El Quijote",
+      "author": "Miguel de Cervantes",
+      "edition": "Primera",
+      "numberOfPages": 500
+    }
+    ```
+
+### Crear un nuevo libro
+
+- **URL:** `/api/books`
+- **Método:** `POST`
+- **Cuerpo de la solicitud:**
+    ```json
+    {
+      "title": "El Quijote",
+      "author": "Miguel de Cervantes",
+      "edition": "Primera",
+      "numberOfPages": 500
+    }
+    ```
+- **Respuesta exitosa:** `200 OK`
+- **Ejemplo de respuesta:**
+    ```json
+    {
+      "id": 1,
+      "title": "El Quijote",
+      "author": "Miguel de Cervantes",
+      "edition": "Primera",
+      "numberOfPages": 500
+    }
+    ```
+
+### Actualizar un libro
+
+- **URL:** `/api/books/{id}`
+- **Método:** `PUT`
+- **Cuerpo de la solicitud:**
+    ```json
+    {
+      "title": "El Quijote",
+      "author": "Miguel de Cervantes",
+      "edition": "Segunda",
+      "numberOfPages": 550
+    }
+    ```
+- **Respuesta exitosa:** `200 OK`
+- **Ejemplo de respuesta:**
+    ```json
+    {
+      "id": 1,
+      "title": "El Quijote",
+      "author": "Miguel de Cervantes",
+      "edition": "Segunda",
+      "numberOfPages": 550
+    }
+    ```
+
+### Eliminar un libro
+
+- **URL:** `/api/books/{id}`
+- **Método:** `DELETE`
+- **Respuesta exitosa:** `200 OK`
+- **Ejemplo de respuesta:**
+    ```json
+    {
+      "id": 1,
+      "title": "El Quijote",
+      "author": "Miguel de Cervantes",
+      "edition": "Primera",
+      "numberOfPages": 500
+    }
+    ```
+
+## Manejo de Errores
+
+La API maneja los siguientes errores:
+
+- **404 Not Found:** Cuando un libro no es encontrado.
+- **400 Bad Request:** Cuando hay errores de validación.
