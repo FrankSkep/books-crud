@@ -1,14 +1,17 @@
 <script>
     import { goto } from '$app/navigation';
+    import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
 
     let books = writable([]); // store the books in a writable store
 
+    let pageSize = 10;
+    let pageSizes = [5, 10, 20, 50];
     let currentPage = 0;
     let totalPages = 1;
 
-    async function fetchBooks(page = 0) {
-        const response = await fetch(`http://localhost:8000/api/books?page=${page}`);
+    async function fetchBooks(page = currentPage, size = pageSize) {
+        const response = await fetch(`http://localhost:8000/api/books?page=${page}&size=${size}`);
         const data = await response.json();
         books.set(data.content || []);
         currentPage = data.pageable.pageNumber;
@@ -26,6 +29,11 @@
         }
     }
 
+    function updatePageSize(event) {
+        pageSize = event.target.value;
+        fetchBooks(0, pageSize);
+    }
+
     function nextPage() {
         fetchBooks(currentPage + 1);
     }
@@ -36,6 +44,18 @@
 
     fetchBooks();
 </script>
+
+<style>
+    .page-controls {
+        margin-top: 20px;
+    }
+
+    .page-size-select {
+        margin-left: 10px;
+        width: auto;
+        max-width: 100px;
+    }
+</style>
 
 <h2 class="text-center my-4">Book List</h2>
 
@@ -69,7 +89,17 @@
     </table>
 </div>
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between page-controls">
     <button class="btn btn-secondary" on:click={prevPage} disabled={currentPage === 0}>Previous</button>
+    <span>Page {currentPage + 1} of {totalPages}</span>
     <button class="btn btn-secondary" on:click={nextPage} disabled={currentPage >= totalPages - 1}>Next</button>
+</div>
+
+<div class="d-flex justify-content-end page-controls">
+    <label for="pageSizeSelect">Page Size:</label>
+    <select id="pageSizeSelect" class="form-select page-size-select" on:change={updatePageSize}>
+        {#each pageSizes as size}
+            <option value={size} selected={size === pageSize}>{size}</option>
+        {/each}
+    </select>
 </div>
