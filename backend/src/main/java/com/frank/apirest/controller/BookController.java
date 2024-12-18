@@ -6,6 +6,9 @@ import com.frank.apirest.service.BookService;
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +27,8 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping
-    public List<Book> getBooks() {
-        return bookService.getAllBooks();
+    public Page<Book> getBooks(@PageableDefault(size = 10) Pageable pageable) {
+        return bookService.getAllBooks(pageable);
     }
 
     @GetMapping("/{id}")

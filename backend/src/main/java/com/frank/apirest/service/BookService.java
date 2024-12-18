@@ -7,6 +7,8 @@ import com.frank.apirest.repository.BookRepository;
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,8 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+    public Page<Book> getAllBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
 
     public Book getBookDetails(Long id) {

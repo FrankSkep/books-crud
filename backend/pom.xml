@@ -11,8 +11,8 @@
 	<groupId>com.frank</groupId>
 	<artifactId>apirest</artifactId>
 	<version>1.0</version>
-	<name>apirest</name>
-	<description>Basic CRUD Apirest</description>
+	<name>LibraryCrudApi</name>
+	<description>library crud rest api</description>
 	<url/>
 	<licenses>
 		<license/>
