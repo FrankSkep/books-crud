@@ -12,7 +12,6 @@
     };
 
     async function addBook(event) {
-        console.log(book);
         event.preventDefault();
         const response = await fetch('http://localhost:8000/api/books', {
             method: 'POST',

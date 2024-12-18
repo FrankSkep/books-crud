@@ -1,6 +1,19 @@
 <script>
     import { goto } from '$app/navigation';
-    export let books;
+    import { writable } from 'svelte/store';
+
+    let books = writable([]); // store the books in a writable store
+
+    let currentPage = 0;
+    let totalPages = 1;
+
+    async function fetchBooks(page = 0) {
+        const response = await fetch(`http://localhost:8000/api/books?page=${page}`);
+        const data = await response.json();
+        books.set(data.content || []);
+        currentPage = data.pageable.pageNumber;
+        totalPages = data.totalPages;
+    }
 
     function navigateToEditBook(id) {
         goto(`/edit/${id}`);
@@ -12,6 +25,16 @@
             goto(`/delete/${id}`);
         }
     }
+
+    function nextPage() {
+        fetchBooks(currentPage + 1);
+    }
+
+    function prevPage() {
+        fetchBooks(currentPage - 1);
+    }
+
+    fetchBooks();
 </script>
 
 <h2 class="text-center my-4">Book List</h2>
@@ -44,4 +67,9 @@
             {/each}
         </tbody>
     </table>
+</div>
+
+<div class="d-flex justify-content-between">
+    <button class="btn btn-secondary" on:click={prevPage} disabled={currentPage === 0}>Previous</button>
+    <button class="btn btn-secondary" on:click={nextPage} disabled={currentPage >= totalPages - 1}>Next</button>
 </div>
