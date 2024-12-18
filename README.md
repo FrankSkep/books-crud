@@ -2,35 +2,50 @@
 
 ## Descripción
 
-Este proyecto es una aplicación web CRUD para gestionar una colección de libros. Se implementa con un backend independiente, desarrollado con **Spring Boot** y **PostgreSQL**, y un frontend desarrollado con **SvelteKit**. La API REST del backend es consumida por el frontend, proporcionando una interfaz interactiva para gestionar los datos de los libros.
+Aplicación web CRUD para gestionar una colección de libros. Se implementa con un backend independiente, desarrollado con **Spring Boot** y **PostgreSQL**, y un frontend desarrollado con **SvelteKit**.
 
 ### Propósito
 
 El objetivo principal de este proyecto fue crear una arquitectura de aplicación separada, con un **backend** y un **frontend** desacoplados, para demostrar el consumo de una API RESTful desde una aplicación frontend.
 
+## Características
+
+### Backend
+
+- **CRUD de Libros**: Crear, leer, actualizar y eliminar libros.
+- **Paginación**: Soporte para paginación en la lista de libros.
+- **Filtrado**: Filtrado de libros por título y autor.
+- **Validación**: Validación de datos de entrada.
+- **Manejo de Errores**: Manejo de errores comunes.
+
+### Frontend
+
+- **Listado de Libros**: Visualización de la lista de libros con paginación y filtrado.
+- **Formulario de Libros**: Formularios para agregar y editar libros.
+- **Notificaciones**: Notificaciones de éxito y error.
+- **Navegación**: Navegación entre las diferentes vistas de la aplicación.
+
 ## Tecnologías
 
 ### Backend
 
-- **Java 21**: Lenguaje de programación principal.
-- **Spring Boot**: Framework para crear aplicaciones web y servicios RESTful.
-- **PostgreSQL**: Base de datos relacional utilizada para almacenar los datos de los libros.
-- **Maven**: Herramienta de gestión de proyectos y dependencias.
+- **Java**
+- **Spring Boot**
+- **PostgreSQL**
 
 #### [Endpoints API](backend/README.md)
 
 ### Frontend
 
-- **SvelteKit**: Framework frontend para crear aplicaciones web modernas y rápidas.
-- **Bootstrap**: Framework de estilos para el diseño de la interfaz de usuario.
-- **Node.js**: Entorno de ejecución para la aplicación frontend.
+- **SvelteKit**
+- **Bootstrap**
+- **Node.js**
 
 ## Requisitos
 
-- **Java 21** (para el backend)
-- **Maven** (para gestionar dependencias del backend)
-- **Node.js** y **npm** (para el frontend)
-- **PostgreSQL** (base de datos)
+- **JDK 21**
+- **Node.js** y **npm**
+- **PostgreSQL**
 
 ## Instalación y Ejecución
 
@@ -43,13 +58,13 @@ El objetivo principal de este proyecto fue crear una arquitectura de aplicación
    cd library-crud/backend
    ```
 
-2. Configura la base de datos en `src/main/resources/application.properties`, agregando los detalles de tu instancia de **PostgreSQL**.
+2. Configura la base de datos en `.env.template`, renombra a `.env` y agrega los detalles de tu instancia de **PostgreSQL**.
 
 3. Construye y ejecuta el proyecto:
 
    ```sh
-   ./mvnw clean install
-   ./mvnw spring-boot:run
+   mvn clean install
+   mvn spring-boot:run
    ```
 
    El backend estará disponible en `http://localhost:8080`.
@@ -81,7 +96,7 @@ El objetivo principal de este proyecto fue crear una arquitectura de aplicación
 
 ### Backend
 
-- `/src/main/java/`: Código fuente del backend (Controladores, servicios, repositorios).
+- `/src/main/java/`: Código fuente del backend.
 - `/src/main/resources/`: Archivos de configuración y recursos, como `application.properties`.
 
 ### Frontend
