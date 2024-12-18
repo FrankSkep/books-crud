@@ -30,6 +30,7 @@
                 triggerToast('Book updated successfully', 'success');
             } else {
                 const error = await response.json();
+                console.log(error);
                 triggerToast(
                     `Failed to update book: ${error.message}`,
                     'danger',
