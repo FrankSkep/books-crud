@@ -3,7 +3,7 @@
     import Form from '../../lib/Form.svelte';
     import { triggerToast } from '../../lib/toastStore';
 
-    // Book object
+    // book object
     let book = {
         title: '',
         author: '',
@@ -24,6 +24,18 @@
         if (response.ok) {
             goto('/');
             triggerToast('Book added successfully', 'success');
+        } else {
+            const errorData = await response.json();
+            let errors = 'An error occurred';
+            if (errorData.errors && Array.isArray(errorData.errors)) {
+                console.log(errorData.errors);
+                errors = errorData.errors.join(', ');
+            } else if (errorData.message) {
+                errors = errorData.message;
+            } else {
+                console.log('Unexpected error format:', errorData);
+            }
+            triggerToast(errors, 'danger');
         }
     }
 </script>
