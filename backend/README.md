@@ -1,4 +1,4 @@
-# LibraryCrudAPI
+# Book Crud RESTful API
 
 ## Endpoints
 
@@ -113,6 +113,16 @@
       "edition": "Primera",
       "numberOfPages": 500
     }
+    ```
+
+### Obtener el total de libros
+
+- **URL:** `/api/books/total`
+- **Método:** `GET`
+- **Respuesta exitosa:** `200 OK`
+- **Ejemplo de respuesta:**
+    ```json
+    100
     ```
 
 ## Manejo de Errores
