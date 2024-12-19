@@ -2,11 +2,11 @@
 
 ## Descripción
 
-Aplicación web CRUD para gestionar una colección de libros. Se implementa con un backend independiente, desarrollado con **Spring Boot** y **PostgreSQL**, y un frontend desarrollado con **SvelteKit**.
+Aplicación web CRUD para gestionar una colección de libros. Se implementa con un backend independiente, desarrollado con **Java y Spring Boot**, y un frontend desarrollado con **SvelteKit y Bootstrap**.
 
 ### Propósito
 
-El objetivo principal de este proyecto fue crear una arquitectura de aplicación separada, con un **backend** y un **frontend** desacoplados, para demostrar el consumo de una API RESTful desde una aplicación frontend.
+El objetivo principal de este proyecto fue crear una arquitectura de aplicación separada, con un **backend** y un **frontend** desacoplados, para probar el consumo de una API RESTful desde una aplicación frontend.
 
 ## Características
 
@@ -16,7 +16,7 @@ El objetivo principal de este proyecto fue crear una arquitectura de aplicación
 - **Paginación**: Soporte para paginación en la lista de libros.
 - **Filtrado**: Filtrado de libros por título y autor.
 - **Validación**: Validación de datos de entrada.
-- **Manejo de Errores**: Manejo de errores comunes.
+- **Manejo de Excepciones**: Gestión de errores y excepciones.
 
 ### Frontend
 
@@ -33,7 +33,7 @@ El objetivo principal de este proyecto fue crear una arquitectura de aplicación
 - **Spring Boot**
 - **PostgreSQL**
 
-#### [Endpoints API](backend/README.md)
+#### [Endpoints](backend/README.md)
 
 ### Frontend
 
@@ -67,7 +67,7 @@ El objetivo principal de este proyecto fue crear una arquitectura de aplicación
    mvn spring-boot:run
    ```
 
-   El backend estará disponible en `http://localhost:8080`.
+   El backend estará disponible en `http://localhost:8000`.
 
 ### Frontend
 
@@ -91,15 +91,3 @@ El objetivo principal de este proyecto fue crear una arquitectura de aplicación
    ```
 
    El frontend estará disponible en `http://localhost:5173`.
-
-## Estructura del Proyecto
-
-### Backend
-
-- `/src/main/java/`: Código fuente del backend.
-- `/src/main/resources/`: Archivos de configuración y recursos, como `application.properties`.
-
-### Frontend
-
-- `/src/routes`: Páginas y rutas de la aplicación SvelteKit.
-- `/src/lib`: Componentes reutilizables y utilidades.
