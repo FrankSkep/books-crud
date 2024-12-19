@@ -22,7 +22,7 @@
         });
 
         if (response.ok) {
-            goto('/');
+            goto('/books');
             triggerToast('Book added successfully', 'success');
         } else {
             const errorData = await response.json();
