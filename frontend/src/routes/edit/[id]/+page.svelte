@@ -26,7 +26,7 @@
             );
 
             if (response.ok) {
-                goto('/');
+                goto('/books');
                 triggerToast('Book updated successfully', 'success');
             } else {
                 const error = await response.json();

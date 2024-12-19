@@ -14,7 +14,7 @@
         });
 
         if (response.ok) {
-            goto('/');
+            goto('/books');
             triggerToast('Book deleted successfully', 'warning');
         } else {
             triggerToast('Failed to delete the book', 'danger');
