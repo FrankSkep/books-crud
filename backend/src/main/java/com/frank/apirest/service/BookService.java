@@ -25,6 +25,10 @@ public class BookService {
                 .orElseThrow(() -> new BookNotFoundException("Book with ID : " + id + " not found"));
     }
 
+    public Long getTotalBooks() {
+        return bookRepository.countTotalBooks();
+    }
+
     public Book createBook(Book book) {
         return bookRepository.save(book);
     }
@@ -41,11 +45,10 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public ResponseEntity<Book> deleteBook(Long id) {
+    public void deleteBook(Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException("Book with ID : " + id + " not found"));
 
         bookRepository.delete(book);
-        return ResponseEntity.ok(book);
     }
 }

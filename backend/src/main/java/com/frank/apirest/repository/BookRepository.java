@@ -12,5 +12,7 @@ public interface BookRepository extends JpaRepository<Book, Long>, PagingAndSort
 
     @Query("SELECT b FROM Book b WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :title, '%')) AND LOWER(b.author) LIKE LOWER(CONCAT('%', :author, '%'))")
     Page<Book> findByTitleAndAuthorIgnoreCase(@Param("title") String title, @Param("author") String author, Pageable pageable);
-    
+
+    @Query("SELECT COUNT(b) FROM Book b")
+    Long countTotalBooks();
 }
