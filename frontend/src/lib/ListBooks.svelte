@@ -13,6 +13,10 @@
     let filterTitle = '';
     let filterAuthor = '';
 
+    onMount(() => {
+        fetchBooks();
+    });
+
     async function fetchBooks(page = currentPage, size = pageSize, title = filterTitle, author = filterAuthor) {
         const response = await fetch(`http://localhost:8000/api/books?page=${page}&size=${size}&title=${title}&author=${author}`);
         const data = await response.json();
@@ -48,8 +52,6 @@
     function applyFilters() {
         fetchBooks(0, pageSize, filterTitle, filterAuthor);
     }
-
-    fetchBooks();
 </script>
 
 <style>

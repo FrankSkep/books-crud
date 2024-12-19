@@ -30,11 +30,7 @@
                 triggerToast('Book updated successfully', 'success');
             } else {
                 const error = await response.json();
-                console.log(error);
-                triggerToast(
-                    `Failed to update book: ${error.message}`,
-                    'danger',
-                );
+                triggerToast(`Failed to update book: ${error.message}`, 'danger');
             }
         } catch (error) {
             triggerToast(`Error: ${error.message}`, 'danger');
@@ -42,4 +38,19 @@
     }
 </script>
 
-<Form data={data} action={updateBook} />
+<style>
+    .alert {
+        margin-top: 50px;
+    }
+</style>
+
+{#if data.error === undefined}
+    <Form data={data} action={updateBook} />
+{:else}
+    <div class="alert alert-danger">
+        <p>{data.error}</p>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary" on:click={() => window.history.back()}>Volver</button>
+    </div>
+{/if}
