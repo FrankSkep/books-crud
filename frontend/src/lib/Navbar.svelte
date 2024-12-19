@@ -1,3 +1,13 @@
+<style>
+  .navbar-nav .nav-link {
+    color: #ffffff;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #f3e416;
+  }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <h2 class="navbar-brand">Library</h2>
@@ -8,9 +18,6 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/add">Add book</a>
           </li>
         </ul>
       </div>

@@ -1,13 +1,11 @@
 <script>
     import { goto } from '$app/navigation';
-    import { triggerToast } from './toastStore.js';
 
     export let data, action;
     const isEditing = data.id !== undefined;
 
     function cancel() {
-        goto('/');
-        triggerToast('Operation canceled', 'danger');
+        goto('/books');
     }
 </script>
 
