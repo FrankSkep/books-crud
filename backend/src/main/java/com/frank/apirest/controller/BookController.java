@@ -3,9 +3,6 @@ package com.frank.apirest.controller;
 import com.frank.apirest.entity.Book;
 import com.frank.apirest.service.BookService;
 
-import java.util.List;
-
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +21,7 @@ public class BookController {
     public Page<Book> getBooks(@RequestParam(required = false) String title,
                                @RequestParam(required = false) String author,
                                @PageableDefault(size = 10) Pageable pageable) {
-        return bookService.getBooksByTitleAndAuthor(title, author, pageable);
+        return bookService.getBooksWithOptionalFilter(title, author, pageable);
     }
 
     @GetMapping("/{id}")

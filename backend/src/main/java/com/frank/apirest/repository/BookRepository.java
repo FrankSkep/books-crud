@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface BookRepository extends JpaRepository<Book, Long>, PagingAndSortingRepository<Book, Long> {
 
-    @Query("SELECT b FROM Book b WHERE (:title IS NULL OR b.title LIKE %:title%) AND (:author IS NULL OR b.author LIKE %:author%)")
-    Page<Book> findByTitleAndAuthor(@Param("title") String title, @Param("author") String author, Pageable pageable);
+    @Query("SELECT b FROM Book b WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :title, '%')) AND LOWER(b.author) LIKE LOWER(CONCAT('%', :author, '%'))")
+    Page<Book> findByTitleAndAuthorIgnoreCase(@Param("title") String title, @Param("author") String author, Pageable pageable);
     
 }

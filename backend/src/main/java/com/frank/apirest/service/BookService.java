@@ -4,8 +4,6 @@ import com.frank.apirest.entity.Book;
 import com.frank.apirest.exception.BookNotFoundException;
 import com.frank.apirest.repository.BookRepository;
 
-import java.util.List;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,12 +16,8 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    public Page<Book> getAllBooks(Pageable pageable) {
-        return bookRepository.findAll(pageable);
-    }
-
-    public Page<Book> getBooksByTitleAndAuthor(String title, String author, Pageable pageable) {
-        return bookRepository.findByTitleAndAuthor(title, author, pageable);
+    public Page<Book> getBooksWithOptionalFilter(String title, String author, Pageable pageable) {
+        return bookRepository.findByTitleAndAuthorIgnoreCase(title, author, pageable);
     }
 
     public Book getBookDetails(Long id) {
